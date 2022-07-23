@@ -1,0 +1,44 @@
+<xml>
+
+    <!-- For a more in depth guide: https://github.com/snowkit/hxcpp-guide -->
+
+    <files id='haxe'>
+
+        <!-- add files and flags to the haxe c++ build -->
+
+        <compilerflag value='-I${LINC_DISCORDSDK_PATH}/linc/'/>
+        <compilerflag value='-I${LINC_DISCORDSDK_PATH}/lib/'/>
+        <compilerflag value='-DEMPTY_EXAMPLE_DEFINE_FOR_THE_CPP_CODE'/>
+        <file name='${LINC_DISCORDSDK_PATH}linc/linc_discordsdk.cpp' />
+        <file name='${LINC_DISCORDSDK_PATH}lib/achievement_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/activity_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/application_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/core.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/image_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/lobby_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/network_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/overlay_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/relationship_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/storage_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/store_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/user_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/voice_manager.cpp'/>
+        <file name='${LINC_DISCORDSDK_PATH}lib/types.cpp'/>
+    </files>
+
+    <target id="haxe">
+        <section if="windows">
+            <libpathflag value="-L${LINC_DISCORDSDK_PATH}lib/"/>
+            <section if='HXCPP_M32'>
+                <lib name="${LINC_DISCORDSDK_PATH}lib/discordsdk_x86.lib"/>
+            </section>
+            <section if='HXCPP_M64'>
+                <lib name="${LINC_DISCORDSDK_PATH}lib/discordsdk.lib"/>
+            </section>
+        </section>
+
+        <!-- add linker flags to the haxe build output -->
+
+    </target>
+
+</xml>

@@ -1,6 +1,7 @@
 -main Test.hx
 -cpp cpp/
 -cp ../
+-cmd cp ../lib/discord_game_sdk.dll ./cpp/discord_game_sdk.dll
 # pick a target
 
 #-D mac

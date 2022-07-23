@@ -1,4 +1,10 @@
-# linc/empty
-An example empty project to start a linc library.
+# linc/DiscordSDK
+<img src="richpresence.png" alt="drawing" width="75%" height=50%/>
 
-For more information, see the [linc homepage](http://snowkit.github.io/linc/)
+Bindings for the Discord GameSDK
+
+This is work in progress, expect things to change.
+
+# Todo
+* [ ] Not have race conditions
+* [ ] Parties
