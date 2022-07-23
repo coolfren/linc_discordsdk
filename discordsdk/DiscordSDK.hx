@@ -14,12 +14,14 @@ extern class DiscordSDK {
         //external native function definition
         //can be wrapped in linc::libname or call directly
         //and the header for the lib included in linc_discordsdk.h
+    @:native('linc::discordsdk::runCallbacks')
+    static function runCallbacks() : Void;
 
     @:native('linc::discordsdk::init')
-    static function _init(clientId:Int64) : Void;
+    static function _init(clientId:Int64, callback:Void->Void) : Void;
 
-    static inline function init(clientId:String) : Void{
-        return _init(Int64Helper.parseString(clientId));
+    static inline function init(clientId:String, callback:()->Void) : Void{
+        return _init(Int64Helper.parseString(clientId), callback);
     };
     
     @:native('linc::discordsdk::updateActivity')

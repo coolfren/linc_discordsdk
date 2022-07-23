@@ -14,6 +14,9 @@
 namespace linc {
 
     namespace discordsdk {
+
+        extern void runCallbacks();
+
         extern void updateActivity(
             const char* details,
             const char* state,
@@ -24,7 +27,7 @@ namespace linc {
             int type
         );
 
-        extern void init(int64_t clientId);
+        extern void init(int64_t clientId, Dynamic& callback);
 
     } //discordsdk namespace
 

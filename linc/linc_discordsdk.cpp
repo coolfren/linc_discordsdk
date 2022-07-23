@@ -6,6 +6,14 @@ namespace linc {
     namespace discordsdk {
         discord::Core* core{};
 
+        void runCallbacks(){
+            core->RunCallbacks();
+        }
+
+        void makeParty(){
+            
+        }
+
         void updateActivity(const char* details,
             const char* state,
             const char* smallImage,
@@ -29,25 +37,14 @@ namespace linc {
 
         }
 
-        int _init(int64_t clientId) {
+        void init(int64_t clientId, Dynamic& callback){
             auto result = discord::Core::Create(clientId, DiscordCreateFlags_Default, &core);
             if (!core) {
                 std::cout << "Failed to instantiate discord core! (err " << static_cast<int>(result)
                         << ")\n";
                 std::exit(-1);
             }
-            using namespace std::literals::chrono_literals;
-            while(true){
-                core->RunCallbacks();
-                std::this_thread::sleep_for(1s);
-            }
-            return (int)result;
-        }
-
-        void init(int64_t clientId){
-            std::thread gamesdk_thread(_init, clientId);
-            gamesdk_thread.detach();
+            callback();
         }
     } //discordsdk namespace
-
 } //linc

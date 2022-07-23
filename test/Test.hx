@@ -3,8 +3,7 @@ class Test {
         
     static function main() {
         trace("Initializing Discord...");
-        discordsdk.DiscordSDK.init("310270644849737729");
-        haxe.Timer.delay(()->{
+        discordsdk.DiscordSDK.init("310270644849737729", ()->{
             trace("Changing Activity...");
             discordsdk.DiscordSDK.updateActivity(
                 "Fruit Tarts",
@@ -15,8 +14,11 @@ class Test {
                 "u mage",
                 Playing
             );
-        }, 500).run();
-        Sys.stdin().readLine();
+        });
+        while(true){
+            discordsdk.DiscordSDK.runCallbacks();
+            Sys.sleep(1);
+        }
     }
 
 }

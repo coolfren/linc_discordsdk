@@ -6,5 +6,5 @@ Bindings for the Discord GameSDK
 This is work in progress, expect things to change.
 
 # Todo
-* [ ] Not have race conditions
+* [x] Not have race conditions
 * [ ] Parties

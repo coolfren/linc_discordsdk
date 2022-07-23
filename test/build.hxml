@@ -1,7 +1,7 @@
 -main Test.hx
 -cpp cpp/
 -cp ../
--cmd cp ../lib/discord_game_sdk.dll ./cpp/discord_game_sdk.dll
+-cmd copy ..\lib\discord_game_sdk.dll .\cpp\discord_game_sdk.dll
 # pick a target
 
 #-D mac
@@ -15,4 +15,4 @@
 #-D HXCPP_M32
 
 #-cmd ./cpp/Test
-#-cmd ./cpp/Test.exe
+-cmd .\cpp\Test.exe
