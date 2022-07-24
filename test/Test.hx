@@ -1,24 +1,34 @@
-
+import discordsdk.DiscordSDK;
 class Test {
         
-    static function main() {
-        trace("Initializing Discord...");
-        discordsdk.DiscordSDK.init("310270644849737729", ()->{
-            trace("Changing Activity...");
-            discordsdk.DiscordSDK.updateActivity(
-                "Fruit Tarts",
-                "Pop Snacks",
-                "the",
-                "i mage",
-                "the",
-                "u mage",
-                Playing
-            );
-        });
-        while(true){
-            discordsdk.DiscordSDK.runCallbacks();
-            Sys.sleep(1);
-        }
+    static function onUpdateActivity(){
+        DiscordSDK.makeParty("foo id", "foo join", "foo spectate", 1, 5);
     }
 
+    static function onInit(){
+        trace("Changing Activity...");
+        DiscordSDK.updateActivity(
+            "Formerly Chuck's",
+            "Arguing with the city slicker",
+            "sneed",
+            "Playing as Sneed",
+            "sfsfc",
+            "Sneed's Feed & Seed",
+            Playing,
+            onUpdateActivity
+        );
+    }
+
+    static function onError(result:Result){
+        trace("Error code: " + result);
+    }
+
+    static function main() {
+        trace("Initializing Discord...");
+        DiscordSDK.init("1000534631373881344", onInit, onError);
+        while(true){
+            DiscordSDK.runCallbacks();
+            Sys.sleep(0.01);
+        }
+    }
 }

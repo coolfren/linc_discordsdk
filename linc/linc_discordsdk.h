@@ -17,6 +17,10 @@ namespace linc {
 
         extern void runCallbacks();
 
+        extern void makeParty(const char* id, const char* joinId, const char* spectateId, int currentSize, int maxSize);
+
+        extern void registerCommand(const char* url);
+
         extern void updateActivity(
             const char* details,
             const char* state,
@@ -24,10 +28,11 @@ namespace linc {
             const char* smallText,
             const char* largeImage,
             const char* largeText,
-            int type
+            int type,
+            Dynamic& callback
         );
 
-        extern void init(int64_t clientId, Dynamic& callback);
+        extern void init(int64_t clientId, Dynamic& onInit, Dynamic& onError);
 
     } //discordsdk namespace
 

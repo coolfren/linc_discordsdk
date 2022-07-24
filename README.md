@@ -7,4 +7,4 @@ This is work in progress, expect things to change.
 
 # Todo
 * [x] Not have race conditions
-* [ ] Parties
+* [x] Parties
