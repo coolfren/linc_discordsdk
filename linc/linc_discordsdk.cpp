@@ -20,9 +20,8 @@ namespace linc {
                 activity.GetParty().GetSize().SetMaxSize(maxSize);
                 activity.GetSecrets().SetJoin(joinId);
                 activity.GetSecrets().SetSpectate(spectateId);
-                core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {
-                    std::cout << ((result == discord::Result::Ok) ? "Succeeded" : "Failed")
-                            << " updating party!\n";
+                core->ActivityManager().UpdateActivity(activity, [onPartyMake = std::move(onPartyMake)](discord::Result result) {
+                    const_cast<Dynamic&>(onPartyMake)(((int)result));
                 });
         }
 
@@ -37,6 +36,8 @@ namespace linc {
             const char* largeImage,
             const char* largeText,
             int type,
+            int startTimestamp,
+            int endTimestamp,
             Dynamic& callback
         ){
                 discord::Activity& activity = discordsdk::activity; // too lazy kek
@@ -47,6 +48,8 @@ namespace linc {
                 activity.GetAssets().SetLargeImage(largeImage);
                 activity.GetAssets().SetLargeText(largeText);
                 activity.SetType((discord::ActivityType)type);
+                activity.GetTimestamps().SetStart(startTimestamp);
+                activity.GetTimestamps().SetEnd(endTimestamp);
                 activity.SetInstance(true);
                 core->ActivityManager().UpdateActivity(activity, [callback = std::move(callback)](discord::Result result) {
                     (result == discord::Result::Ok) ? const_cast<Dynamic&>(callback)() : onError((int)result);
@@ -57,7 +60,7 @@ namespace linc {
         void init(int64_t clientId, Dynamic& onInit, Dynamic& onError){
             auto result = discord::Core::Create(clientId, DiscordCreateFlags_Default, &core);
             if (!core) {
-                onError(8);
+                onError((int)result);
                 return;
             }
             discordsdk::onInit = std::move(onInit);

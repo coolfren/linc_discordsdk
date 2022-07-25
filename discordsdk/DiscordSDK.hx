@@ -17,7 +17,7 @@ extern class DiscordSDK {
     static function runCallbacks() : Void;
 
     @:native('linc::discordsdk::makeParty')
-    static function makeParty(id:ConstCharStar = cast "", joinId:ConstCharStar = cast "", spectateId:ConstCharStar = cast "", currentSize:Int = 1, maxSize:Int = 10) : Void;
+    static function makeParty(id:ConstCharStar = cast "", joinId:ConstCharStar = cast "", spectateId:ConstCharStar = cast "", currentSize:Int = 1, maxSize:Int = 10, onPartyMake:(result:Int)->Void) : Void;
 
     @:native('linc::discordsdk::registerCommand')
     static function registerCommand(url:ConstCharStar = cast "") : Void;
@@ -38,6 +38,8 @@ extern class DiscordSDK {
         largeImage:ConstCharStar = cast "",
         largeText:ConstCharStar = cast "",
         type:ActivityType = Playing,
+        startTimestamp:Int = 0,
+        endTimestamp:Int = 0,
         callback:()->Void
     ) : Void;
         //inline functions can be used as wrappers

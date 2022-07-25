@@ -17,7 +17,7 @@ namespace linc {
 
         extern void runCallbacks();
 
-        extern void makeParty(const char* id, const char* joinId, const char* spectateId, int currentSize, int maxSize);
+        extern void makeParty(const char* id, const char* joinId, const char* spectateId, int currentSize, int maxSize, Dynamic& onPartyMake);
 
         extern void registerCommand(const char* url);
 
@@ -29,6 +29,8 @@ namespace linc {
             const char* largeImage,
             const char* largeText,
             int type,
+            int startTimestamp,
+            int endTimestamp,
             Dynamic& callback
         );
 

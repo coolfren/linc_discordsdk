@@ -2,7 +2,9 @@ import discordsdk.DiscordSDK;
 class Test {
         
     static function onUpdateActivity(){
-        DiscordSDK.makeParty("foo id", "foo join", "foo spectate", 1, 5);
+        DiscordSDK.makeParty("foo id", "foo join", "foo spectate", 1, 5, (res)->{
+            trace("Party created!");
+        });
     }
 
     static function onInit(){
@@ -15,6 +17,8 @@ class Test {
             "sfsfc",
             "Sneed's Feed & Seed",
             Playing,
+            0,
+            0,
             onUpdateActivity
         );
     }
