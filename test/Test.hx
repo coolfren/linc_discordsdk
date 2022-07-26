@@ -17,8 +17,8 @@ class Test {
             "sfsfc",
             "Sneed's Feed & Seed",
             Playing,
-            0,
-            0,
+            Date.now().getTime(),
+            Date.now().getTime() + 60,
             onUpdateActivity
         );
     }

@@ -1,7 +1,7 @@
 //hxcpp include should be first
 #include <hxcpp.h>
 #include "./linc_discordsdk.h"
-#define function []
+
 namespace linc {
     namespace discordsdk {
         discord::Core* core{};
@@ -36,8 +36,8 @@ namespace linc {
             const char* largeImage,
             const char* largeText,
             int type,
-            int startTimestamp,
-            int endTimestamp,
+            float startTimestamp,
+            float endTimestamp,
             Dynamic& callback
         ){
                 discord::Activity& activity = discordsdk::activity; // too lazy kek

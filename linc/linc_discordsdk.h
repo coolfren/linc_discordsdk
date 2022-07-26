@@ -29,8 +29,8 @@ namespace linc {
             const char* largeImage,
             const char* largeText,
             int type,
-            int startTimestamp,
-            int endTimestamp,
+            float startTimestamp,
+            float endTimestamp,
             Dynamic& callback
         );
 

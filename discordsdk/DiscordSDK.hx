@@ -38,8 +38,8 @@ extern class DiscordSDK {
         largeImage:ConstCharStar = cast "",
         largeText:ConstCharStar = cast "",
         type:ActivityType = Playing,
-        startTimestamp:Int = 0,
-        endTimestamp:Int = 0,
+        startTimestamp:Float = 0,
+        endTimestamp:Float = 0,
         callback:()->Void
     ) : Void;
         //inline functions can be used as wrappers
