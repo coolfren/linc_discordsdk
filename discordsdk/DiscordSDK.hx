@@ -16,6 +16,9 @@ extern class DiscordSDK {
     @:native('linc::discordsdk::runCallbacks')
     static function runCallbacks() : Void;
 
+    @:native('linc::discordsdk::onActivityJoinRequest')
+    static function onActivityJoinRequest(callback:cpp.Function<(username:ConstCharStar, id:cpp.Int64, avatar:ConstCharStar)->Void, cpp.abi.Abi>) : Void;
+
     @:native('linc::discordsdk::makeParty')
     static function makeParty(id:ConstCharStar = cast "", joinId:ConstCharStar = cast "", spectateId:ConstCharStar = cast "", currentSize:Int = 1, maxSize:Int = 10, onPartyMake:(result:Int)->Void) : Void;
 
@@ -102,4 +105,15 @@ abstract ActivityType(Int) from Int to Int {
     var Streaming = 1;
     var Listening = 2;
     var Watching = 3;
+}
+
+@:native("discord::User")
+extern class User
+{
+    @:native("discord::User::GetUsername")
+    function GetUsername() : ConstCharStar;
+    @:native("discord::User::GetDiscriminator")
+    function GetDiscriminator() : ConstCharStar;
+    @:native("discord::User::GetAvatar")
+    function GetAvatar() : ConstCharStar;
 }

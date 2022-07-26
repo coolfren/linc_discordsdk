@@ -7,11 +7,17 @@ namespace linc {
         discord::Core* core{};
         discord::Activity activity{};
 
-        Dynamic onInit;
+        Dynamic onInit; // using dynamic for functions probably is not a good idea, but eh 
         Dynamic onError;
 
         void runCallbacks(){
             core->RunCallbacks();
+        }
+
+        void onActivityJoinRequest(const std::function<void(const char*, int64_t, const char*)> callback){
+            core->ActivityManager().OnActivityJoinRequest.Connect([callback = std::move(callback)](discord::User user){
+                 callback(user.GetUsername(), user.GetId(), user.GetAvatar());
+            });
         }
 
         void makeParty(const char* id, const char* joinId, const char* spectateId, int currentSize, int maxSize, Dynamic& onPartyMake){

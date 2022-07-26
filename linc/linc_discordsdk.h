@@ -6,7 +6,7 @@
 #endif
 #include <iostream>
 #include <chrono>
-#include <thread>
+#include <functional>
 #include "../lib/discord.h"
 //include other library includes as needed
 // #include "../lib/____"
@@ -16,6 +16,8 @@ namespace linc {
     namespace discordsdk {
 
         extern void runCallbacks();
+
+        extern void onActivityJoinRequest(const std::function<void(const char*, int64_t, const char*)> callback);
 
         extern void makeParty(const char* id, const char* joinId, const char* spectateId, int currentSize, int maxSize, Dynamic& onPartyMake);
 

@@ -2,6 +2,10 @@ import discordsdk.DiscordSDK;
 class Test {
         
     static function onUpdateActivity(){
+        DiscordSDK.onActivityJoinRequest(new cpp.Function((u, i, a)->{
+            trace("hi");
+            //user.GetUsername();
+        }));
         DiscordSDK.makeParty("foo id", "foo join", "foo spectate", 1, 5, (res)->{
             trace("Party created!");
         });

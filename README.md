@@ -8,3 +8,4 @@ This is work in progress, expect things to change.
 # Todo
 * [x] Not have race conditions
 * [x] Parties
+* [ ] Working invite callbacks
